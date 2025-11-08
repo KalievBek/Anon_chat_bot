@@ -1,50 +1,44 @@
 # keyboards/main_keyboards.py
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
-
-# Главное меню (Reply Keyboard)
-main_menu_kb = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text="🔍 Найти собеседника")],
-        [KeyboardButton(text="👤 Профиль"), KeyboardButton(text="📋 Правила")],
-        [KeyboardButton(text="ℹ️ Помощь")]
-    ],
-    resize_keyboard=True,
-    one_time_keyboard=False
-)
-
-# Режим чата (Reply Keyboard)
-chat_mode_kb = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton(text="⏭️ Следующий"), KeyboardButton(text="🚫 Завершить диалог")],
-        [KeyboardButton(text="👤 Профиль")]
-    ],
-    resize_keyboard=True,
-    one_time_keyboard=False
-)
-
-# Режим поиска (Inline Keyboard)
-searching_kb = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [InlineKeyboardButton(text="❌ Отменить поиск", callback_data="cancel_search")],
-    ]
-)
-
-# Клавиатура для профиля
-profile_kb = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [InlineKeyboardButton(text="✏️ Редактировать профиль", callback_data="edit_profile")],
-        [InlineKeyboardButton(text="◀️ Назад", callback_data="back_to_main")]
-    ]
-)
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 def get_main_menu():
-    return main_menu_kb
+    """Главное меню"""
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="🔍 Найти собеседника")],
+            [KeyboardButton(text="👤 Профиль"), KeyboardButton(text="📋 Правила")],
+            [KeyboardButton(text="ℹ️ Помощь")]
+        ],
+        resize_keyboard=True
+    )
 
 def get_chat_mode_menu():
-    return chat_mode_kb
+    """Меню в режиме чата"""
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="⏭️ Следующий"), KeyboardButton(text="🚫 Завершить диалог")],
+            [KeyboardButton(text="👤 Профиль"), KeyboardButton(text="ℹ️ Помощь")]
+        ],
+        resize_keyboard=True
+    )
 
 def get_searching_keyboard():
-    return searching_kb
+    """Клавиатура во время поиска"""
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="❌ Остановить поиск")],
+            [KeyboardButton(text="👤 Профиль"), KeyboardButton(text="ℹ️ Помощь")]
+        ],
+        resize_keyboard=True
+    )
 
 def get_profile_keyboard():
-    return profile_kb
+    """Клавиатура профиля"""
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text="🔍 Найти собеседника")],
+            [KeyboardButton(text="📋 Правила"), KeyboardButton(text="ℹ️ Помощь")],
+            [KeyboardButton(text="🏠 Главное меню")]
+        ],
+        resize_keyboard=True
+    )

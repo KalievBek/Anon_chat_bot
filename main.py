@@ -1,4 +1,4 @@
-# main.py - исправленные импорты
+# main.py - ИСПРАВЛЕННАЯ ВЕРСИЯ ДЛЯ SQLite
 import asyncio
 import logging
 import os
@@ -6,7 +6,7 @@ import sys
 
 from core.bot import dp, bot
 from core.database import db
-from handlers import command_router, callback_router, message_router, reply_router
+from handlers import command_router, callback_router, message_router, reply_router, chat_handlers
 
 # Создаем папку для логов если её нет
 os.makedirs('logs', exist_ok=True)
@@ -26,17 +26,18 @@ logger = logging.getLogger(__name__)
 
 async def main():
     try:
-        # 1. Настройка базы данных
-        logger.info("🔄 Настройка базы данных...")
+        # 1. Настройка базы данных SQLite
+        logger.info("🔄 Настройка базы данных SQLite...")
         await db.setup()
-        logger.info("✅ Database setup complete.")
+        logger.info("✅ SQLite database setup complete.")
 
-        # Проверяем структуру таблицы
+        # Проверяем структуру таблицы (SQLite версия)
         await db.connect()
         tables = await db.execute("SELECT name FROM sqlite_master WHERE type='table'")
         logger.info(f"📊 Таблицы в базе: {[table['name'] for table in tables]}")
 
         if tables and any(table['name'] == 'users' for table in tables):
+            # Для SQLite проверяем колонки через PRAGMA
             columns = await db.execute("PRAGMA table_info(users)")
             column_names = [column['name'] for column in columns]
             logger.info(f"📋 Колонки в таблице users: {column_names}")
@@ -51,12 +52,12 @@ async def main():
 
         await db.close()
 
-        # 2. Подключение роутеров - ИСПРАВЛЕННЫЕ НАЗВАНИЯ
+        # 2. Подключение роутеров
         dp.include_router(command_router)
         dp.include_router(callback_router)
         dp.include_router(message_router)
         dp.include_router(reply_router)
-
+        dp.include_router(chat_handlers.router)  # Добавьте эту строку
         # 3. Запуск бота
         logger.info("🚀 Starting bot...")
         await bot.delete_webhook(drop_pending_updates=True)

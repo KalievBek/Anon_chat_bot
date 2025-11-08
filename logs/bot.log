@@ -3888,3 +3888,659 @@ aiogram.exceptions.TelegramBadRequest: Telegram server says - Bad Request: can't
 2025-11-08 15:52:07,688 - INFO - aiogram.event - Update id=303513721 is handled. Duration 203 ms by bot id=8471649377
 2025-11-08 15:52:10,260 - INFO - aiogram.event - Update id=303513722 is handled. Duration 188 ms by bot id=8471649377
 2025-11-08 15:52:12,927 - INFO - aiogram.event - Update id=303513723 is handled. Duration 625 ms by bot id=8471649377
+2025-11-08 14:15:30,412 - INFO - __main__ - 🔄 Настройка базы данных...
+2025-11-08 14:15:30,419 - INFO - core.database - Database connection established
+2025-11-08 14:15:30,427 - INFO - core.database - Column 'status' exists
+2025-11-08 14:15:30,429 - INFO - core.database - Column 'current_chat_id' exists
+2025-11-08 14:15:30,430 - INFO - core.database - Database setup completed successfully
+2025-11-08 14:15:30,430 - INFO - core.database - Database connection closed
+2025-11-08 14:15:30,430 - INFO - __main__ - ✅ Database setup complete.
+2025-11-08 14:15:30,432 - INFO - core.database - Database connection established
+2025-11-08 14:15:30,434 - INFO - __main__ - 📊 Таблицы в базе: ['users', 'active_chats', 'sqlite_sequence', 'search_queue', 'chat_history', 'reports']
+2025-11-08 14:15:30,435 - INFO - __main__ - 📋 Колонки в таблице users: ['user_id', 'username', 'full_name', 'gender', 'age', 'city', 'interests', 'bio', 'rating', 'warns', 'is_banned', 'can_send_photos', 'is_admin', 'language', 'created_at', 'last_active', 'status', 'current_chat_id']
+2025-11-08 14:15:30,435 - INFO - core.database - Database connection closed
+2025-11-08 14:15:30,436 - INFO - __main__ - 🚀 Starting bot...
+2025-11-08 14:15:30,777 - INFO - __main__ - ✅ Бот успешно запущен!
+2025-11-08 14:15:30,777 - INFO - aiogram.dispatcher - Start polling
+2025-11-08 14:15:30,884 - INFO - aiogram.dispatcher - Run polling for bot @AnonChatDemoBot id=8471649377 - 'Анонимный Чат'
+2025-11-08 14:15:38,543 - INFO - core.database - Database connection established
+2025-11-08 14:15:38,926 - INFO - aiogram.event - Update id=303513730 is handled. Duration 375 ms by bot id=8471649377
+2025-11-08 14:16:10,383 - INFO - aiogram.event - Update id=303513731 is handled. Duration 311 ms by bot id=8471649377
+2025-11-08 14:16:13,729 - INFO - aiogram.event - Update id=303513732 is handled. Duration 219 ms by bot id=8471649377
+2025-11-08 14:16:14,962 - INFO - aiogram.event - Update id=303513733 is handled. Duration 157 ms by bot id=8471649377
+2025-11-08 14:16:23,393 - INFO - aiogram.event - Update id=303513734 is not handled. Duration 15 ms by bot id=8471649377
+2025-11-08 14:16:29,116 - INFO - aiogram.event - Update id=303513735 is not handled. Duration 0 ms by bot id=8471649377
+2025-11-08 14:16:41,647 - INFO - aiogram.event - Update id=303513736 is handled. Duration 155 ms by bot id=8471649377
+2025-11-08 14:16:44,066 - INFO - aiogram.event - Update id=303513737 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 14:16:52,386 - INFO - aiogram.event - Update id=303513738 is not handled. Duration 15 ms by bot id=8471649377
+2025-11-08 14:16:57,488 - INFO - aiogram.event - Update id=303513739 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 14:16:59,278 - INFO - aiogram.event - Update id=303513740 is not handled. Duration 0 ms by bot id=8471649377
+2025-11-08 14:37:36,218 - INFO - aiogram.dispatcher - Polling stopped
+2025-11-08 14:37:36,237 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-11-08 14:37:36,238 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8471649377)
+2025-11-08 14:37:36,499 - INFO - core.database - Database connection closed
+2025-11-08 14:37:36,500 - INFO - __main__ - 🛑 Bot stopped.
+2025-11-08 14:37:36,557 - INFO - aiogram.dispatcher - Polling stopped for bot @AnonChatDemoBot id=8471649377 - 'Анонимный Чат'
+2025-11-08 14:37:36,565 - INFO - __main__ - Bot stopped by user
+2025-11-08 16:17:47,265 - INFO - __main__ - 🔄 Настройка базы данных PostgreSQL...
+2025-11-08 16:17:47,271 - INFO - core.database - SQLite database connection established
+2025-11-08 16:17:47,281 - INFO - core.database - SQLite database setup completed successfully
+2025-11-08 16:17:47,282 - INFO - core.database - Database connection closed
+2025-11-08 16:17:47,282 - INFO - __main__ - ✅ PostgreSQL database setup complete.
+2025-11-08 16:17:47,283 - INFO - core.database - SQLite database connection established
+2025-11-08 16:17:47,285 - ERROR - __main__ - ❌ Critical error: no such table: information_schema.tables
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\main.py", line 35, in main
+    tables = await db.execute("""
+             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\core\database.py", line 28, in execute
+    await cursor.execute(query, params)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 122, in _execute
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 105, in run
+    result = function()
+             ^^^^^^^^^^
+sqlite3.OperationalError: no such table: information_schema.tables
+2025-11-08 16:17:47,344 - INFO - core.database - Database connection closed
+2025-11-08 16:17:47,345 - INFO - __main__ - 🛑 Bot stopped.
+2025-11-08 16:17:47,346 - ERROR - __main__ - ❌ Application error: no such table: information_schema.tables
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\main.py", line 87, in <module>
+    asyncio.run(main())
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\main.py", line 35, in main
+    tables = await db.execute("""
+             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\core\database.py", line 28, in execute
+    await cursor.execute(query, params)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 122, in _execute
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 105, in run
+    result = function()
+             ^^^^^^^^^^
+sqlite3.OperationalError: no such table: information_schema.tables
+2025-11-08 16:18:47,635 - INFO - __main__ - 🔄 Настройка базы данных SQLite...
+2025-11-08 16:18:47,638 - INFO - core.database - SQLite database connection established
+2025-11-08 16:18:47,640 - INFO - core.database - SQLite database setup completed successfully
+2025-11-08 16:18:47,641 - INFO - core.database - Database connection closed
+2025-11-08 16:18:47,642 - INFO - __main__ - ✅ SQLite database setup complete.
+2025-11-08 16:18:47,643 - INFO - core.database - SQLite database connection established
+2025-11-08 16:18:47,653 - INFO - __main__ - 📊 Таблицы в базе: ['users', 'active_chats', 'sqlite_sequence', 'search_queue', 'chat_history', 'reports']
+2025-11-08 16:18:47,655 - INFO - __main__ - 📋 Колонки в таблице users: ['user_id', 'username', 'full_name', 'gender', 'age', 'city', 'interests', 'bio', 'rating', 'warns', 'is_banned', 'can_send_photos', 'is_admin', 'language', 'created_at', 'last_active', 'status', 'current_chat_id']
+2025-11-08 16:18:47,657 - INFO - core.database - Database connection closed
+2025-11-08 16:18:47,657 - INFO - __main__ - 🚀 Starting bot...
+2025-11-08 16:18:48,041 - INFO - __main__ - ✅ Бот успешно запущен!
+2025-11-08 16:18:48,042 - INFO - aiogram.dispatcher - Start polling
+2025-11-08 16:18:48,152 - INFO - aiogram.dispatcher - Run polling for bot @AnonChatDemoBot id=8471649377 - 'Анонимный Чат'
+2025-11-08 16:19:08,497 - INFO - __main__ - 🔄 Настройка базы данных SQLite...
+2025-11-08 16:19:08,499 - INFO - core.database - SQLite database connection established
+2025-11-08 16:19:08,502 - INFO - core.database - SQLite database setup completed successfully
+2025-11-08 16:19:08,502 - INFO - core.database - Database connection closed
+2025-11-08 16:19:08,503 - INFO - __main__ - ✅ SQLite database setup complete.
+2025-11-08 16:19:08,505 - INFO - core.database - SQLite database connection established
+2025-11-08 16:19:08,507 - INFO - __main__ - 📊 Таблицы в базе: ['users', 'active_chats', 'sqlite_sequence', 'search_queue', 'chat_history', 'reports']
+2025-11-08 16:19:08,509 - INFO - __main__ - 📋 Колонки в таблице users: ['user_id', 'username', 'full_name', 'gender', 'age', 'city', 'interests', 'bio', 'rating', 'warns', 'is_banned', 'can_send_photos', 'is_admin', 'language', 'created_at', 'last_active', 'status', 'current_chat_id']
+2025-11-08 16:19:08,509 - INFO - core.database - Database connection closed
+2025-11-08 16:19:08,510 - INFO - __main__ - 🚀 Starting bot...
+2025-11-08 16:19:08,845 - INFO - __main__ - ✅ Бот успешно запущен!
+2025-11-08 16:19:08,845 - INFO - aiogram.dispatcher - Start polling
+2025-11-08 16:19:08,959 - INFO - aiogram.dispatcher - Run polling for bot @AnonChatDemoBot id=8471649377 - 'Анонимный Чат'
+2025-11-08 16:19:16,190 - INFO - core.database - SQLite database connection established
+2025-11-08 16:19:16,627 - INFO - aiogram.event - Update id=303513741 is handled. Duration 437 ms by bot id=8471649377
+2025-11-08 16:19:21,621 - INFO - aiogram.event - Update id=303513742 is handled. Duration 359 ms by bot id=8471649377
+2025-11-08 16:19:24,408 - INFO - aiogram.event - Update id=303513743 is handled. Duration 141 ms by bot id=8471649377
+2025-11-08 16:19:31,818 - INFO - aiogram.event - Update id=303513744 is handled. Duration 327 ms by bot id=8471649377
+2025-11-08 16:19:34,849 - INFO - aiogram.event - Update id=303513745 is handled. Duration 172 ms by bot id=8471649377
+2025-11-08 16:19:36,233 - INFO - aiogram.event - Update id=303513746 is handled. Duration 234 ms by bot id=8471649377
+2025-11-08 16:19:40,300 - INFO - aiogram.event - Update id=303513747 is handled. Duration 187 ms by bot id=8471649377
+2025-11-08 16:19:44,575 - INFO - aiogram.event - Update id=303513748 is handled. Duration 203 ms by bot id=8471649377
+2025-11-08 16:19:49,191 - INFO - aiogram.event - Update id=303513749 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 16:19:52,138 - INFO - aiogram.event - Update id=303513750 is handled. Duration 170 ms by bot id=8471649377
+2025-11-08 16:19:58,332 - INFO - aiogram.event - Update id=303513751 is not handled. Duration 0 ms by bot id=8471649377
+2025-11-08 16:20:00,654 - INFO - aiogram.event - Update id=303513752 is handled. Duration 141 ms by bot id=8471649377
+2025-11-08 16:20:06,979 - INFO - aiogram.event - Update id=303513753 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 16:20:13,073 - INFO - aiogram.event - Update id=303513754 is handled. Duration 172 ms by bot id=8471649377
+2025-11-08 16:20:13,297 - INFO - aiogram.event - Update id=303513755 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 16:20:16,630 - INFO - aiogram.event - Update id=303513756 is handled. Duration 171 ms by bot id=8471649377
+2025-11-08 16:20:51,278 - INFO - aiogram.event - Update id=303513757 is handled. Duration 359 ms by bot id=8471649377
+2025-11-08 16:20:53,358 - INFO - aiogram.event - Update id=303513758 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 16:22:32,142 - INFO - aiogram.event - Update id=303513759 is not handled. Duration 0 ms by bot id=8471649377
+2025-11-08 16:22:32,143 - ERROR - aiogram.event - Cause exception while process update id=303513759 by bot id=8471649377
+IntegrityError: NOT NULL constraint failed: users.full_name
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\storage\memory.py", line 56, in lock
+    yield
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\handlers\command_handlers.py", line 21, in cmd_start
+    await user_service.register_user(user_id, username)
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\services\user_service.py", line 10, in register_user
+    await db.execute_commit(
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\core\database.py", line 35, in execute_commit
+    await cursor.execute(query, params)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 122, in _execute
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 105, in run
+    result = function()
+             ^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: users.full_name
+2025-11-08 16:23:21,014 - INFO - aiogram.event - Update id=303513760 is handled. Duration 530 ms by bot id=8471649377
+2025-11-08 16:23:22,513 - INFO - aiogram.event - Update id=303513761 is handled. Duration 155 ms by bot id=8471649377
+2025-11-08 16:23:52,589 - INFO - aiogram.event - Update id=303513762 is not handled. Duration 0 ms by bot id=8471649377
+2025-11-08 16:23:52,590 - ERROR - aiogram.event - Cause exception while process update id=303513762 by bot id=8471649377
+IntegrityError: NOT NULL constraint failed: users.full_name
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\storage\memory.py", line 56, in lock
+    yield
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\handlers\command_handlers.py", line 21, in cmd_start
+    await user_service.register_user(user_id, username)
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\services\user_service.py", line 10, in register_user
+    await db.execute_commit(
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\core\database.py", line 35, in execute_commit
+    await cursor.execute(query, params)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 122, in _execute
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 105, in run
+    result = function()
+             ^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: users.full_name
+2025-11-08 16:23:53,539 - INFO - aiogram.event - Update id=303513763 is not handled. Duration 15 ms by bot id=8471649377
+2025-11-08 16:23:53,540 - ERROR - aiogram.event - Cause exception while process update id=303513763 by bot id=8471649377
+IntegrityError: NOT NULL constraint failed: users.full_name
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\storage\memory.py", line 56, in lock
+    yield
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\handlers\command_handlers.py", line 21, in cmd_start
+    await user_service.register_user(user_id, username)
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\services\user_service.py", line 10, in register_user
+    await db.execute_commit(
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\core\database.py", line 35, in execute_commit
+    await cursor.execute(query, params)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 40, in execute
+    await self._execute(self._cursor.execute, sql, parameters)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\cursor.py", line 32, in _execute
+    return await self._conn._execute(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 122, in _execute
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiosqlite\core.py", line 105, in run
+    result = function()
+             ^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: users.full_name
+2025-11-08 16:24:05,076 - INFO - aiogram.event - Update id=303513764 is handled. Duration 844 ms by bot id=8471649377
+2025-11-08 16:24:07,127 - INFO - aiogram.event - Update id=303513765 is handled. Duration 234 ms by bot id=8471649377
+2025-11-08 16:24:37,375 - INFO - aiogram.event - Update id=303513766 is handled. Duration 655 ms by bot id=8471649377
+2025-11-08 16:24:40,801 - INFO - aiogram.event - Update id=303513767 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 16:24:45,330 - INFO - aiogram.event - Update id=303513768 is handled. Duration 141 ms by bot id=8471649377
+2025-11-08 16:24:50,246 - INFO - aiogram.event - Update id=303513769 is handled. Duration 234 ms by bot id=8471649377
+2025-11-08 16:24:53,182 - INFO - aiogram.event - Update id=303513770 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 16:24:58,181 - INFO - aiogram.event - Update id=303513771 is handled. Duration 202 ms by bot id=8471649377
+2025-11-08 16:25:07,167 - INFO - aiogram.event - Update id=303513772 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 16:25:15,325 - INFO - aiogram.event - Update id=303513773 is not handled. Duration 16 ms by bot id=8471649377
+2025-11-08 16:25:52,468 - INFO - aiogram.event - Update id=303513774 is handled. Duration 407 ms by bot id=8471649377
+2025-11-08 16:25:55,001 - INFO - aiogram.event - Update id=303513775 is handled. Duration 140 ms by bot id=8471649377
+2025-11-08 16:25:58,086 - INFO - aiogram.event - Update id=303513776 is handled. Duration 157 ms by bot id=8471649377
+2025-11-08 16:26:07,624 - INFO - aiogram.event - Update id=303513777 is handled. Duration 155 ms by bot id=8471649377
+2025-11-08 16:26:15,601 - INFO - aiogram.event - Update id=303513778 is handled. Duration 125 ms by bot id=8471649377
+2025-11-08 16:26:18,409 - INFO - aiogram.event - Update id=303513779 is handled. Duration 187 ms by bot id=8471649377
+2025-11-08 16:26:25,505 - INFO - aiogram.event - Update id=303513780 is handled. Duration 125 ms by bot id=8471649377
+2025-11-08 16:26:29,259 - INFO - aiogram.event - Update id=303513781 is handled. Duration 170 ms by bot id=8471649377
+2025-11-08 16:26:33,743 - INFO - aiogram.event - Update id=303513782 is handled. Duration 187 ms by bot id=8471649377
+2025-11-08 16:26:37,290 - INFO - aiogram.event - Update id=303513783 is handled. Duration 157 ms by bot id=8471649377
+2025-11-08 16:26:43,534 - INFO - aiogram.event - Update id=303513784 is handled. Duration 172 ms by bot id=8471649377
+2025-11-08 16:27:13,682 - INFO - aiogram.dispatcher - Polling stopped
+2025-11-08 16:27:13,686 - ERROR - aiogram.dispatcher - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 1] [SSL: APPLICATION_DATA_AFTER_CLOSE_NOTIFY] application data after close notify (_ssl.c:2672)
+2025-11-08 16:27:13,687 - WARNING - aiogram.dispatcher - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8471649377)
+2025-11-08 16:27:13,951 - INFO - core.database - Database connection closed
+2025-11-08 16:27:13,951 - INFO - __main__ - 🛑 Bot stopped.
+2025-11-08 16:27:13,961 - INFO - aiogram.dispatcher - Polling stopped for bot @AnonChatDemoBot id=8471649377 - 'Анонимный Чат'
+2025-11-08 16:27:13,963 - INFO - __main__ - Bot stopped by user
+2025-11-08 16:27:26,670 - INFO - __main__ - 🔄 Настройка базы данных SQLite...
+2025-11-08 16:27:26,674 - INFO - core.database - ✅ SQLite database connection established
+2025-11-08 16:27:26,675 - INFO - core.database - 🔄 Creating database tables...
+2025-11-08 16:27:26,680 - INFO - core.database - ✅ Database tables created successfully
+2025-11-08 16:27:26,681 - INFO - core.database - ✅ Database connection closed
+2025-11-08 16:27:26,681 - INFO - __main__ - ✅ SQLite database setup complete.
+2025-11-08 16:27:26,683 - INFO - core.database - ✅ SQLite database connection established
+2025-11-08 16:27:26,685 - INFO - __main__ - 📊 Таблицы в базе: ['users', 'active_chats', 'sqlite_sequence', 'search_queue', 'chat_history', 'reports']
+2025-11-08 16:27:26,686 - INFO - __main__ - 📋 Колонки в таблице users: ['user_id', 'username', 'full_name', 'gender', 'age', 'city', 'interests', 'bio', 'rating', 'warns', 'is_banned', 'can_send_photos', 'is_admin', 'language', 'created_at', 'last_active', 'status', 'current_chat_id']
+2025-11-08 16:27:26,687 - INFO - core.database - ✅ Database connection closed
+2025-11-08 16:27:26,687 - INFO - __main__ - 🚀 Starting bot...
+2025-11-08 16:27:27,024 - INFO - __main__ - ✅ Бот успешно запущен!
+2025-11-08 16:27:27,024 - INFO - aiogram.dispatcher - Start polling
+2025-11-08 16:27:27,133 - INFO - aiogram.dispatcher - Run polling for bot @AnonChatDemoBot id=8471649377 - 'Анонимный Чат'
+2025-11-08 16:27:35,165 - INFO - aiogram.event - Update id=303513785 is not handled. Duration 0 ms by bot id=8471649377
+2025-11-08 16:27:35,166 - ERROR - aiogram.event - Cause exception while process update id=303513785 by bot id=8471649377
+AttributeError: 'UserService' object has no attribute 'get_user_status'
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\storage\memory.py", line 56, in lock
+    yield
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 113, in trigger
+    result, data = await handler.check(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\handlers\message_handlers.py", line 15, in __call__
+    status = await user_service.get_user_status(message.from_user.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'UserService' object has no attribute 'get_user_status'
+2025-11-08 16:27:36,598 - INFO - aiogram.event - Update id=303513786 is not handled. Duration 0 ms by bot id=8471649377
+2025-11-08 16:27:36,598 - ERROR - aiogram.event - Cause exception while process update id=303513786 by bot id=8471649377
+AttributeError: 'UserService' object has no attribute 'get_user_status'
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\storage\memory.py", line 56, in lock
+    yield
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 113, in trigger
+    result, data = await handler.check(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\handlers\message_handlers.py", line 15, in __call__
+    status = await user_service.get_user_status(message.from_user.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'UserService' object has no attribute 'get_user_status'
+2025-11-08 16:27:48,359 - INFO - core.database - ✅ SQLite database connection established
+2025-11-08 16:27:48,789 - INFO - aiogram.event - Update id=303513787 is handled. Duration 437 ms by bot id=8471649377
+2025-11-08 16:27:54,646 - INFO - aiogram.event - Update id=303513788 is not handled. Duration 0 ms by bot id=8471649377
+2025-11-08 16:27:54,647 - ERROR - aiogram.event - Cause exception while process update id=303513788 by bot id=8471649377
+AttributeError: 'UserService' object has no attribute 'get_user_status'
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\storage\memory.py", line 56, in lock
+    yield
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 113, in trigger
+    result, data = await handler.check(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\handlers\message_handlers.py", line 15, in __call__
+    status = await user_service.get_user_status(message.from_user.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'UserService' object has no attribute 'get_user_status'
+2025-11-08 16:30:31,539 - INFO - aiogram.event - Update id=303513789 is not handled. Duration 15 ms by bot id=8471649377
+2025-11-08 16:30:31,540 - ERROR - aiogram.event - Cause exception while process update id=303513789 by bot id=8471649377
+AttributeError: 'UserService' object has no attribute 'get_user_status'
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 56, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\storage\memory.py", line 56, in lock
+    yield
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\fsm\middleware.py", line 42, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 170, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 142, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 137, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\router.py", line 162, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 113, in trigger
+    result, data = await handler.check(event, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 94, in check
+    check = await event_filter.call(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Университет\Anon_chat_bot\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\User\Desktop\Разделы\Anon_chat_bot\handlers\message_handlers.py", line 15, in __call__
+    status = await user_service.get_user_status(message.from_user.id)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'UserService' object has no attribute 'get_user_status'

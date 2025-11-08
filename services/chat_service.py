@@ -1,50 +1,118 @@
 # services/chat_service.py
+import random
 from core.database import db
-from .user_service import user_service
+from services.user_service import user_service
 
 
 class ChatService:
-    async def start_searching(self, user_id: int):
-        """
-        Ищет свободного собеседника или ставит пользователя в очередь.
-        Возвращает ID партнера или None.
-        """
-        # 1. Ищем пользователя в статусе 'searching' (кроме самого себя)
-        partner_row = await db.execute(
-            "SELECT user_id FROM users WHERE status = 'searching' AND user_id != ? LIMIT 1",
-            (user_id,)
-        )
+    @staticmethod
+    async def start_searching(user_id: int):
+        """Начинает поиск собеседника для пользователя"""
+        try:
+            # Устанавливаем статус поиска
+            await user_service.update_user_status(user_id, 'searching')
 
-        if partner_row:
-            partner_id = partner_row[0]['user_id']
+            # Ищем случайного собеседника
+            partner = await user_service.find_user_by_status('searching')
 
-            # 2. Нашли пару: меняем статус и связываем их
-            await user_service.set_user_status(user_id, 'chatting')
-            await user_service.set_current_chat(user_id, partner_id)
+            if partner and partner['user_id'] != user_id:
+                # Создаем чат между пользователями
+                partner_id = partner['user_id']
 
-            await user_service.set_user_status(partner_id, 'chatting')
-            await user_service.set_current_chat(partner_id, user_id)
+                # Создаем запись о чате
+                await db.execute_commit(
+                    """INSERT INTO active_chats (user1_id, user2_id) 
+                       VALUES (?, ?)""",
+                    (min(user_id, partner_id), max(user_id, partner_id))
+                )
 
-            return partner_id
-        else:
-            # 3. Не нашли: ставим пользователя в очередь
-            await user_service.set_user_status(user_id, 'searching')
+                # Получаем ID созданного чата
+                result = await db.execute(
+                    "SELECT chat_id FROM active_chats WHERE user1_id = ? AND user2_id = ?",
+                    (min(user_id, partner_id), max(user_id, partner_id))
+                )
+
+                chat_id = result[0]['chat_id'] if result else None
+
+                if chat_id:
+                    # Обновляем статусы и устанавливаем чат
+                    await user_service.update_user_status(user_id, 'chatting')
+                    await user_service.update_user_status(partner_id, 'chatting')
+                    await user_service.set_current_chat(user_id, chat_id)
+                    await user_service.set_current_chat(partner_id, chat_id)
+
+                    return partner_id
+
             return None
 
-    async def end_chat(self, user_id: int):
-        """Завершает текущий чат для пользователя и его собеседника."""
-        partner_id = await user_service.get_current_chat(user_id)
+        except Exception as e:
+            print(f"❌ Error starting search: {e}")
+            await user_service.update_user_status(user_id, 'menu')
+            return None
 
-        # Сброс данных для текущего пользователя
-        await user_service.set_user_status(user_id, 'menu')
-        await user_service.set_current_chat(user_id, None)
+    @staticmethod
+    async def end_chat(user_id: int):
+        """Завершает чат для пользователя"""
+        try:
+            # Получаем информацию о текущем чате
+            current_chat_id = await user_service.get_current_chat(user_id)
 
-        # Сброс данных для партнера
-        if partner_id:
-            await user_service.set_user_status(partner_id, 'menu')
-            await user_service.set_current_chat(partner_id, None)
+            if not current_chat_id:
+                return None
 
-        return partner_id
+            # Находим собеседника
+            result = await db.execute(
+                "SELECT user1_id, user2_id FROM active_chats WHERE chat_id = ?",
+                (current_chat_id,)
+            )
+
+            if not result:
+                return None
+
+            chat_info = result[0]
+            companion_id = chat_info['user1_id'] if chat_info['user1_id'] != user_id else chat_info['user2_id']
+
+            # Обновляем статусы пользователей
+            await user_service.update_user_status(user_id, 'menu')
+            await user_service.set_current_chat(user_id, None)
+
+            # Помечаем чат как неактивный
+            await db.execute_commit(
+                "UPDATE active_chats SET is_active = FALSE WHERE chat_id = ?",
+                (current_chat_id,)
+            )
+
+            return companion_id
+
+        except Exception as e:
+            print(f"❌ Error ending chat: {e}")
+            await user_service.update_user_status(user_id, 'menu')
+            await user_service.set_current_chat(user_id, None)
+            return None
+
+    @staticmethod
+    async def get_companion_id(user_id: int):
+        """Получает ID собеседника пользователя"""
+        try:
+            current_chat_id = await user_service.get_current_chat(user_id)
+
+            if not current_chat_id:
+                return None
+
+            result = await db.execute(
+                "SELECT user1_id, user2_id FROM active_chats WHERE chat_id = ? AND is_active = TRUE",
+                (current_chat_id,)
+            )
+
+            if not result:
+                return None
+
+            chat_info = result[0]
+            return chat_info['user1_id'] if chat_info['user1_id'] != user_id else chat_info['user2_id']
+
+        except Exception as e:
+            print(f"❌ Error getting companion: {e}")
+            return None
 
 
 chat_service = ChatService()
