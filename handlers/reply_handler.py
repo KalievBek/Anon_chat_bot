@@ -1,95 +1,181 @@
+# handlers/reply_handler.py
 import logging
+from aiogram import Router, types, F
+from aiogram.fsm.context import FSMContext
+
 from services.chat_service import chat_service
-from keyboards.main_keyboards import get_main_menu
+from services.user_service import user_service
+from keyboards.main_keyboards import get_main_menu, get_chat_mode_menu, get_searching_keyboard, get_profile_keyboard
 
 logger = logging.getLogger(__name__)
+router = Router()
 
 
-def handle_reply_keyboard(update, context):
-    """Обработка нажатий на reply-кнопки"""
-    text = update.message.text
-    user_id = update.effective_user.id
-
-    if text == "🔍 Найти собеседника":
-        search_from_reply(update, context)
-    elif text == "⏭️ Следующий":
-        next_from_reply(update, context)
-    elif text == "🚫 Завершить диалог":
-        stop_from_reply(update, context)
-    elif text == "👤 Профиль":
-        profile_from_reply(update, context)
-    elif text == "📋 Правила":
-        rules_from_reply(update, context)
-    elif text == "ℹ️ Помощь":
-        help_from_reply(update, context)
-    else:
-        companion_id = chat_service.get_companion(user_id)
-        if companion_id:
-            try:
-                context.bot.send_message(companion_id, f"💬 {text}")
-            except Exception as e:
-                update.message.reply_text("❌ Не удалось отправить сообщение")
-        else:
-            update.message.reply_text("❌ У вас нет активного чата", reply_markup=get_main_menu())
-
-
-def search_from_reply(update, context):
+@router.message(F.text == "🔍 Найти собеседника")
+async def search_from_reply(message: types.Message, state: FSMContext):
     """Поиск из reply-кнопки"""
-    user_id = update.effective_user.id
-    companion = chat_service.get_companion(user_id)
-    if companion:
-        update.message.reply_text("❌ Вы уже в активном чате!", reply_markup=get_main_menu())
-        return
+    user_id = message.from_user.id
 
-    chat_service.add_to_search(user_id)
-    update.message.reply_text("🔍 *Ищем собеседника...*", parse_mode='Markdown')
+    try:
+        # Проверяем статус пользователя
+        current_status = await user_service.get_user_status(user_id)
+        if current_status in ['chatting', 'searching']:
+            await message.answer("❌ Вы уже в активном чате или поиске!", reply_markup=get_chat_mode_menu())
+            return
 
-    companion_id = chat_service.find_companion(user_id)
-    if companion_id:
-        context.bot.send_message(user_id, "✅ *Собеседник найден!*", parse_mode='Markdown')
-        context.bot.send_message(companion_id, "✅ *Собеседник найден!*", parse_mode='Markdown')
+        # Начинаем поиск
+        partner_id = await chat_service.start_searching(user_id)
+
+        if partner_id:
+            await message.answer("✅ *Собеседник найден!* Можете начинать общение.",
+                                 parse_mode='Markdown', reply_markup=get_chat_mode_menu())
+            # Уведомляем собеседника
+            await message.bot.send_message(partner_id, "✅ *Собеседник найден!* Можете начинать общение.",
+                                           parse_mode='Markdown', reply_markup=get_chat_mode_menu())
+        else:
+            await message.answer("🔍 *Ищем собеседника...* Ожидайте.",
+                                 parse_mode='Markdown', reply_markup=get_searching_keyboard())
+
+    except Exception as e:
+        logger.error(f"Search error: {e}")
+        await message.answer("❌ Ошибка при поиске собеседника", reply_markup=get_main_menu())
 
 
-def next_from_reply(update, context):
+@router.message(F.text == "⏭️ Следующий")
+async def next_from_reply(message: types.Message, state: FSMContext):
     """Следующий из reply-кнопки"""
-    user_id = update.effective_user.id
-    companion_id = chat_service.end_chat(user_id)
-    if companion_id:
-        context.bot.send_message(companion_id, "🔁 *Собеседник перешел к следующему...*", parse_mode='Markdown')
+    user_id = message.from_user.id
 
-    chat_service.add_to_search(user_id)
-    update.message.reply_text("⏭️ *Ищем следующего собеседника...*", parse_mode='Markdown')
+    try:
+        # Завершаем текущий чат
+        companion_id = await chat_service.end_chat(user_id)
 
-    companion_id = chat_service.find_companion(user_id)
-    if companion_id:
-        context.bot.send_message(user_id, "✅ *Новый собеседник найден!*", parse_mode='Markdown')
+        if companion_id:
+            await message.bot.send_message(companion_id, "🔁 *Собеседник перешел к следующему...*",
+                                           parse_mode='Markdown', reply_markup=get_main_menu())
+
+        # Начинаем новый поиск
+        partner_id = await chat_service.start_searching(user_id)
+
+        if partner_id:
+            await message.answer("✅ *Новый собеседник найден!*", parse_mode='Markdown',
+                                 reply_markup=get_chat_mode_menu())
+        else:
+            await message.answer("⏭️ *Ищем следующего собеседника...*", parse_mode='Markdown',
+                                 reply_markup=get_searching_keyboard())
+
+    except Exception as e:
+        logger.error(f"Next error: {e}")
+        await message.answer("❌ Ошибка при поиске следующего собеседника", reply_markup=get_main_menu())
 
 
-def stop_from_reply(update, context):
+@router.message(F.text.in_(["🚫 Завершить диалог", "❌ Остановить чат"]))
+async def stop_from_reply(message: types.Message, state: FSMContext):
     """Стоп из reply-кнопки"""
-    user_id = update.effective_user.id
-    companion_id = chat_service.end_chat(user_id)
-    if companion_id:
-        context.bot.send_message(companion_id, "❌ *Собеседник завершил диалог*", parse_mode='Markdown')
-    update.message.reply_text("💬 *Диалог завершен!*", parse_mode='Markdown')
+    user_id = message.from_user.id
+
+    try:
+        companion_id = await chat_service.end_chat(user_id)
+
+        if companion_id:
+            await message.bot.send_message(companion_id, "❌ *Собеседник завершил диалог*",
+                                           parse_mode='Markdown', reply_markup=get_main_menu())
+
+        await message.answer("💬 *Диалог завершен!*", parse_mode='Markdown', reply_markup=get_main_menu())
+
+    except Exception as e:
+        logger.error(f"Stop error: {e}")
+        await message.answer("❌ Ошибка при завершении чата", reply_markup=get_main_menu())
 
 
-def profile_from_reply(update, context):
+@router.message(F.text == "👤 Профиль")
+async def profile_from_reply(message: types.Message, state: FSMContext):
     """Профиль из reply-кнопки"""
-    from services.user_service import user_service
-    from keyboards.main_keyboards import get_profile_keyboard
-    user_id = update.effective_user.id
-    profile_text = user_service.get_profile_text(user_id)
-    update.message.reply_text(profile_text, reply_markup=get_profile_keyboard(), parse_mode='Markdown')
+    user_id = message.from_user.id
+
+    try:
+        current_status = await user_service.get_user_status(user_id)
+        companion_id = await user_service.get_current_chat(user_id)
+
+        # Экранируем специальные символы Markdown
+        username = message.from_user.username or 'не указан'
+        full_name = message.from_user.full_name or 'Не указано'
+
+        # Экранирование символов Markdown
+        def escape_markdown(text):
+            if not text:
+                return text
+            escape_chars = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
+            for char in escape_chars:
+                text = text.replace(char, f'\\{char}')
+            return text
+
+        username = escape_markdown(username)
+        full_name = escape_markdown(full_name)
+        current_status = escape_markdown(current_status)
+
+        profile_text = f"""
+👤 *Ваш профиль:*
+
+🆔 ID: `{user_id}`
+👤 Имя: {full_name}
+📛 Username: @{username}
+📊 Статус: {current_status}
+
+*Настройте свой профиль для лучшего подбора собеседников\!*
+"""
+        await message.answer(profile_text, reply_markup=get_profile_keyboard(), parse_mode='MarkdownV2')
+
+    except Exception as e:
+        logger.error(f"Profile error: {e}")
+        # Простой профиль без Markdown
+        simple_profile = f"""
+👤 Ваш профиль:
+
+🆔 ID: {user_id}
+👤 Имя: {message.from_user.full_name or 'Не указано'}
+📛 Username: @{message.from_user.username or 'не указан'}
+
+Функции профиля временно недоступны. Мы работаем над исправлением!
+"""
+        await message.answer(simple_profile, reply_markup=get_main_menu())
 
 
-def rules_from_reply(update, context):
+@router.message(F.text == "📋 Правила")
+async def rules_from_reply(message: types.Message, state: FSMContext):
     """Правила из reply-кнопки"""
-    rules_text = "📋 *Правила общения в чатах:*\n\n1. ✅ Уважайте собеседников\n2. ✅ Запрещен спам"
-    update.message.reply_text(rules_text, reply_markup=get_main_menu(), parse_mode='Markdown')
+    rules_text = """
+📋 *Правила общения в чатах:*
+
+1\. ✅ Уважайте собеседников
+2\. ✅ Запрещен спам и реклама
+3\. ✅ Не раскрывайте личную информацию
+4\. ✅ Сообщения должны быть уместными
+5\. ✅ Запрещены оскорбления и дискриминация
+
+⚠️ Нарушители будут заблокированы\!
+"""
+    await message.answer(rules_text, reply_markup=get_main_menu(), parse_mode='MarkdownV2')
 
 
-def help_from_reply(update, context):
+@router.message(F.text == "ℹ️ Помощь")
+async def help_from_reply(message: types.Message, state: FSMContext):
     """Помощь из reply-кнопки"""
-    help_text = "ℹ️ *Помощь по боту:*\n\n💬 Нажми '🔍 Найти собеседника'"
-    update.message.reply_text(help_text, reply_markup=get_main_menu(), parse_mode='Markdown')
+    help_text = """
+ℹ️ *Помощь по боту:*
+
+🔍 *Найти собеседника* \- начать поиск случайного собеседника
+⏭️ *Следующий* \- переключиться на нового собеседника  
+🚫 *Завершить диалог* \- закончить текущий чат
+👤 *Профиль* \- просмотреть и редактировать свой профиль
+📋 *Правила* \- ознакомиться с правилами общения
+
+💡 *Совет:* Будьте вежливы и уважительны к собеседникам\!
+"""
+    await message.answer(help_text, reply_markup=get_main_menu(), parse_mode='MarkdownV2')
+
+
+@router.message(F.text == "🔎 Начать поиск собеседника")
+async def start_search_from_reply(message: types.Message, state: FSMContext):
+    """Альтернативная кнопка поиска"""
+    await search_from_reply(message, state)

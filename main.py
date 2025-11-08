@@ -1,4 +1,4 @@
-# main.py - УЛУЧШЕННАЯ ВЕРСИЯ
+# main.py - исправленные импорты
 import asyncio
 import logging
 import os
@@ -6,7 +6,7 @@ import sys
 
 from core.bot import dp, bot
 from core.database import db
-from handlers import command_handlers, callback_handlers, message_handlers
+from handlers import command_router, callback_router, message_router, reply_router
 
 # Создаем папку для логов если её нет
 os.makedirs('logs', exist_ok=True)
@@ -51,10 +51,11 @@ async def main():
 
         await db.close()
 
-        # 2. Подключение роутеров
-        dp.include_router(command_handlers.router)
-        dp.include_router(callback_handlers.router)
-        dp.include_router(message_handlers.router)
+        # 2. Подключение роутеров - ИСПРАВЛЕННЫЕ НАЗВАНИЯ
+        dp.include_router(command_router)
+        dp.include_router(callback_router)
+        dp.include_router(message_router)
+        dp.include_router(reply_router)
 
         # 3. Запуск бота
         logger.info("🚀 Starting bot...")
