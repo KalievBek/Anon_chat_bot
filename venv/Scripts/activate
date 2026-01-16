@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\User\Desktop\Разделы\Anon_chat_bot\venv"
+VIRTUAL_ENV="C:\Users\User\Desktop\Разделы\Мой_Проект_Виртуальный_чат\anon_chat_bot\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

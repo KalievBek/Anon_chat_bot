@@ -1,9 +1,14 @@
-# core/bot.py
 from aiogram import Bot, Dispatcher
-from .config import settings
+import os
+from dotenv import load_dotenv
 
-# Инициализируем Bot (простой вариант)
-bot = Bot(token=settings.BOT_TOKEN)
+# Загружаем переменные из .env файла
+load_dotenv()
 
-# Инициализируем Dispatcher
+# Инициализация бота
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise ValueError("❌ BOT_TOKEN не найден в переменных окружения. Проверь файл .env")
+
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
